@@ -45,7 +45,7 @@ function HeroSection({ products }) {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % slides.length);
-    }, 4500);
+    }, 7000);
 
     return () => clearInterval(interval);
   }, [slides.length]);

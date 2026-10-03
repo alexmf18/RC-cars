@@ -1,0 +1,121 @@
+@import 'tailwindcss';
+
+/* "Pit Lane Nocturno": solo modo oscuro. */
+@theme {
+  --color-ink-950: #090b0e;
+  --color-ink-900: #0e1116;
+  --color-ink-850: #13171d;
+  --color-ink-800: #181c24;
+  --color-ink-700: #252a33;
+  --color-ink-600: #343a45;
+  --color-fg: #f4f5f7;
+  --color-fg-muted: #a3a9b4;
+  --color-fg-subtle: #828996;
+
+  --color-flame-300: #ff9a6b;
+  --color-flame-400: #ff7a3d;
+  --color-flame-500: #ff5b1f;
+  --color-flame-600: #e64a10;
+  --color-lime-400: #c8f54a;
+  --color-danger-300: #ff8a80;
+  --color-danger-400: #f8645a;
+  --color-danger-950: #2a1012;
+  --color-success-400: #6ee7a0;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-barlow), 'Arial Narrow', ui-sans-serif, sans-serif;
+
+  --animate-rise: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-fade: fade 0.9s ease-out both;
+  --animate-dialog-in: dialog-in 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes dialog-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-padding-top: 5rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    @apply bg-ink-950 font-sans text-fg antialiased;
+  }
+
+  ::selection {
+    @apply bg-flame-500 text-ink-950;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-flame-400;
+  }
+
+  dialog::backdrop {
+    background: rgb(4 5 7 / 0.8);
+    backdrop-filter: blur(4px);
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+/* Etiqueta de sección con guion naranja: "— TEMPORADA 2026". */
+@utility eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-flame-400);
+
+  &::before {
+    content: '';
+    width: 1.5rem;
+    height: 2px;
+    background: currentColor;
+  }
+}

@@ -1,6 +1,13 @@
 node_modules/
+.next/
+out/
 dist/
 .vercel/
+*.tsbuildinfo
+next-env.d.ts
+playwright-report/
+test-results/
 .env
 .env.*
 !.env.example
+.playwright-mcp/
